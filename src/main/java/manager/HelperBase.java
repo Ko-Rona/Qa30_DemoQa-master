@@ -34,6 +34,7 @@ public class HelperBase {
 
     }
 
+    
     public void clickParent(By locator) {
         wd.findElement(locator).findElement(By.xpath("./..")).click();
     }
