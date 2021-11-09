@@ -19,19 +19,41 @@ public class Student {
     Gender gender;
     String mobile;
     Date dateOfBirth;
-    String[] subjects;
+    String dateOfBDay;
+    String subject;
     boolean sportsHobie;
     boolean readingHobie;
     boolean musicHobie;
+    String hobie;
     String picture;
     String currentAddress;
-    String state;
-    String city;
+    State state;
+    City city;
 
     public enum Gender {
         MALE,
         FEMALE,
         OTHER;
+    }
+
+    public enum State {
+        NCR,
+        UttarPradesh,
+        Haryana,
+        Rajasthan;
+    }
+
+    public enum City {
+        Delhi,
+        Gurgaon,
+        Noida,
+        Agra,
+        Lucknow,
+        Merrut,
+        Karnal,
+        Panipat,
+        Jaipur,
+        Jaiselmer;
     }
 }
 
