@@ -1,10 +1,9 @@
 package tests;
 
 import models.Student;
+import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-
-import java.util.GregorianCalendar;
 
 public class StudentFormTest extends TestBase {
 
@@ -24,16 +23,24 @@ public class StudentFormTest extends TestBase {
                 .email("boyar@gmail.com")
                 .gender(Student.Gender.FEMALE)
                 .mobile("0598452136")
-                .dateOfBirth(new GregorianCalendar(1989, 6, 17).getTime())
-                .subjects(new String[]{"Math", "Computer Science", "Physics"})
+                //.dateOfBirth(new GregorianCalendar(1989, 6, 17).getTime())
+                .dateOfBDay("7 June 2000")
+                .subject("Math, Computer Science, Physics")
                 .sportsHobie(true)
                 .musicHobie(true)
+                .hobie("Sports,Reading")
                 .picture("E:\\QA30\\Qa30_DemoQa-master\\Student.jpg")
                 .currentAddress("Moria ave 5")
-                .state("Haruana")
-                .city("Karnal")
+                .state(Student.State.Haryana)
+                .city(Student.City.Karnal)
                 .build();
 
         app.studentHelper().fillStudentForm(student);
+        app.studentHelper().pause(5000);
+        app.studentHelper().submit();
+        app.studentHelper().pause(5000);
+        app.studentHelper().closeSuccessDialog();
+
+        Assert.assertTrue(app.studentHelper().isSubmittingForm());
     }
 }
