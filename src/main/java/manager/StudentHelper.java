@@ -1,10 +1,9 @@
 package manager;
 
+import models.Hobby;
 import models.Student;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import net.bytebuddy.asm.Advice;
+import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 
@@ -42,24 +41,48 @@ public class StudentHelper extends HelperBase {
         //typeDateBDay("dateOfBirthInput", student.getDateOfBDay());
         typeDateBDaySelect("dateOfBirthInput", student.getDateOfBDay());
         addSubject(student.getSubject());
-        //selectHobbies(student);
-        selectHobie(student.getHobie());
+        selectHobbies(student);
+        //selectHobie(student.getHobie());
+        //selectHobieEnum(student.getHobie());
         addPicture(student.getPicture());
         typeAddress("currentAddress", student.getCurrentAddress());
         typeState(student.getState());
         typeCity(student.getCity());
     }
 
+    private void selectHobieEnum(List<Hobby> hobbies) {
+        for (Hobby h : hobbies) {
+            switch (h) {
+                case Sport:
+                    clickParent(By.id("hobbies-checkbox-1"));
+                    break;
+                case Reading:
+                    clickParent(By.id("hobbies-checkbox-2"));
+                    break;
+                case Music:
+                    clickParent(By.id("hobbies-checkbox-3"));
+                    break;
+            }
+        }
+    }
+
     private void typeCity(Student.City city) {
         WebElement el = wd.findElement(By.id("react-select-4-input"));
-        el.sendKeys(city.toString());
-        el.sendKeys(Keys.ENTER);
+//        el.sendKeys(city.toString());
+//        el.sendKeys(Keys.ENTER);
+        new Actions(wd).sendKeys(el, city.toString()).sendKeys(Keys.ENTER).perform();
     }
 
     private void typeState(Student.State state) {
+//        Dimension dimension = wd.manage().window().getSize();
+//        int i = dimension.getHeight() + dimension.getHeight();
+//        scroll(0, 400);
+
         WebElement el = wd.findElement(By.id("react-select-3-input"));
-        el.sendKeys(state.toString());
-        el.sendKeys(Keys.ENTER);
+//        el.sendKeys(state.toString());
+//        el.sendKeys(Keys.ENTER);
+
+        new Actions(wd).sendKeys(el, state.toString()).sendKeys(Keys.ENTER).perform();
     }
 
     private void selectHobie(String hobie) {

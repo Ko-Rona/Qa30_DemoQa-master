@@ -43,4 +43,35 @@ public class StudentFormTest extends TestBase {
 
         Assert.assertTrue(app.studentHelper().isSubmittingForm());
     }
+
+//    @Test
+//    public void studentFormTest2() {
+//        List<Hobby> hobbies= new ArrayList<>();
+//        hobbies.add(Hobby.Music);
+//        hobbies.add(Hobby.Reading);
+//
+//        StudentEnum student = StudentEnum.builder()
+//                .firstName("Gleb")
+//                .lastName("Boyar")
+//                .email("boyar@gmail.com")
+//                .gender(Student.Gender.FEMALE)
+//                .mobile("0598452136")
+//                //.dateOfBirth(new GregorianCalendar(1989, 6, 17).getTime())
+//                .dateOfBDay("7 June 2000")
+//                .subject("Math, Computer Science, Physics")
+//                .hobbies(hobbies)
+//                .picture("E:\\QA30\\Qa30_DemoQa-master\\Student.jpg")
+//                .currentAddress("Moria ave 5")
+//                .state(Student.State.Haryana)
+//                .city(Student.City.Karnal)
+//                .build();
+//
+//        app.studentHelper().fillStudentForm(student);
+//        app.studentHelper().pause(5000);
+//        app.studentHelper().submit();
+//        app.studentHelper().pause(5000);
+//        app.studentHelper().closeSuccessDialog();
+//
+//        Assert.assertTrue(app.studentHelper().isSubmittingForm());
+//    }
 }

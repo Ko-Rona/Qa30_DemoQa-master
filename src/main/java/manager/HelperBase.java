@@ -46,4 +46,9 @@ public class HelperBase {
             el.sendKeys(text);
         }
     }
+
+    public void scroll(int x, int y) {
+        JavascriptExecutor js  =(JavascriptExecutor) wd;
+        js.executeScript("window.scrollBy(" + x + "," + y + ")");
+    }
 }
