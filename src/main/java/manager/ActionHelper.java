@@ -1,9 +1,6 @@
 package manager;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.Dimension;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 
 public class ActionHelper extends HelperBase {
@@ -12,9 +9,7 @@ public class ActionHelper extends HelperBase {
         super(wd);
     }
 
-
     public void droppebleTest() {
-
         WebElement dragMe = wd.findElement(By.id("draggable"));
         WebElement dropHere = wd.findElement(By.id("droppable"));
         pause(2000);
@@ -47,18 +42,19 @@ public class ActionHelper extends HelperBase {
     }
 
     public void droppebleTest2() {
-
         WebElement dragMe = wd.findElement(By.id("draggable"));
         WebElement dropHere = wd.findElement(By.id("droppable"));
-        pause(2000);
+        WebElement rectangle = wd.findElement(By.id("simpleDropContainer"));
+
+        Rectangle rect = rectangle.getRect();
+        int x = (rect.getWidth() / 2) - 40;
+        int y = (rect.getHeight() / 2) - 35;
+
+        pause(3000);
         dragMe.click();
-
-        Dimension dimension = wd.manage().window().getSize();
-        int x = (dimension.getHeight() / 10) * 6;
-        int y = (dimension.getWidth() / 10) * 6;
-
         Actions actions = new Actions(wd);
-        actions.dragAndDropBy(dragMe, x, y);
+        actions.dragAndDropBy(dragMe, x, y)
+                .build().perform();
 
         String text = dropHere.getText();
 
@@ -68,5 +64,4 @@ public class ActionHelper extends HelperBase {
             System.out.println("Failed");
         }
     }
-
 }

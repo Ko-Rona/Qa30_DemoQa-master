@@ -9,7 +9,6 @@ public class ActionTests extends TestBase{
         app.action().selectInteraction();
         app.action().selectDroppable();
         app.action().droppebleTest();
-
     }
 
     @Test
@@ -17,6 +16,5 @@ public class ActionTests extends TestBase{
         app.action().selectInteraction();
         app.action().selectDroppable();
         app.action().droppebleTest2();
-
     }
 }
